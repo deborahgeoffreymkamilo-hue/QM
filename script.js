@@ -182,3 +182,19 @@ document.addEventListener("keydown", (event) => {
 });
 
 updateLetter();
+
+const celebrateButton = document.querySelector("#celebrate-button");
+celebrateButton.addEventListener("click", () => {
+  const colors = ["#c8a46a", "#fff9f2", "#d9a39a", "#5b3828"];
+  for (let index = 0; index < 70; index += 1) {
+    const confetti = document.createElement("i");
+    confetti.className = "confetti";
+    confetti.style.left = `${Math.random() * 100}vw`;
+    confetti.style.setProperty("--x", `${(Math.random() - 0.5) * 260}px`);
+    confetti.style.backgroundColor = colors[index % colors.length];
+    confetti.style.animationDelay = `${Math.random() * 0.6}s`;
+    document.body.append(confetti);
+    window.setTimeout(() => confetti.remove(), 3200);
+  }
+  if (audio.paused) playButton.click();
+});
