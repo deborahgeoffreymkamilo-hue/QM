@@ -8,11 +8,45 @@
 <section class="letter section"><div class="letter-box"><div class="kicker">A PRIVATE MESSAGE</div><h2>For the girl who deserves to be celebrated.</h2><p id="letterText">May this new chapter be gentle with you. May God surprise you with the kind of blessings you never knew how to ask for. May you never forget how deeply loved, wonderfully made and incredibly capable you are.</p><p><strong id="fromText">With love, always.</strong></p><button class="primary" onclick="celebrate()">Make Her Birthday Sparkle ✦</button></div></section>
 <section class="customize section"><div class="kicker">MAKE IT HERS</div><h2 style="font-family:Georgia,serif;font-size:clamp(38px,6vw,62px);font-weight:500;margin:0 0 12px">Personalize the edition.</h2><p style="color:#a9988c;max-width:700px;line-height:1.7">Change her name and your message, then share the finished birthday page with her. The design is already done — you only add the heart.</p><div class="form"><div class="form-grid"><label>Her name<input id="nameInput" placeholder="e.g. Aisha"></label><label>Your name<input id="senderInput" placeholder="e.g. Deborah"></label></div><label>Your message<textarea id="messageInput" placeholder="Write something only she would understand..."></textarea></label><button class="primary" onclick="personalize()">Update Her Edition ✦</button></div></section><div class="footer">Made like a magazine. Kept like a memory. ♡</div><div class="toast" id="toast">The birthday edition has been updated ✦</div></div><script>
 let ctx,master,timer=null,playing=false,startTime=0,duration=26;const notes=[261.63,329.63,392,523.25,392,329.63,293.66,349.23,440,523.25,440,349.23,329.63,392,493.88,587.33,523.25,392];
+const birthdayMessage = `Happy birthday to one of the most beautiful souls life has ever allowed me to know. 🥹❤️
+
+Sometimes I sit and think about how many memories we’ve created together—the conversations that were supposed to be short but somehow lasted forever, the stupid things we laughed about until our stomachs hurt, the moments we didn’t even realize would become memories, and even the difficult days that somehow taught us more about each other.
+
+I miss those little moments sometimes… the random laughter, the stories, the looks that said everything without words, the days when we could just exist together and somehow that was enough. There are memories of you that I will probably never explain properly to anyone because they belong to a version of us that only we know. And honestly, those are some of my favorite memories.
+
+We’ve changed, grown, learned, and walked through different seasons, but I’m grateful that somewhere along the way, our lives crossed and gave me memories I will carry for a very long time.
+
+On your birthday, I don’t just wish you money, success, or beautiful things. I wish you moments that become memories you’ll smile about years from now. I wish you a life so beautiful that one day you’ll look back and realize you survived everything you once thought would break you.
+
+And if one day we are sitting somewhere years from now, talking about the past, I hope we’ll still laugh about the silly things, remember the places we went, the things we said, the tears we cried, and say, “Look how far we’ve come.”
+
+Thank you for being part of some of my favorite chapters. Thank you for the memories I didn’t know I needed. And thank you for simply being you.
+
+May this new year of your life be gentle with your heart. May God protect you, answer the prayers you keep quietly to yourself, and give you reasons to smile that are bigger than anything you imagined.
+
+Happy birthday, my girl. ❤️
+
+And please remember this: some people pass through our lives, but some people leave pieces of themselves in our memories forever. You are one of those people for me.
+
+I love you, and I hope life gives you a thousand beautiful reasons to remember this birthday. 🥹❤️🎂`;
+document.querySelector('.photo').src = encodeURI('WhatsApp Image 2026-10-30 at 08.44.41.jpeg');
+document.getElementById('letterText').textContent = birthdayMessage;
+document.getElementById('letterText').style.whiteSpace = 'pre-line';
+document.getElementById('messageInput').value = birthdayMessage;
+const audio = document.getElementById('audio');
+audio.src = encodeURI('Attention - Soundz (Slowed n Reverb) (1).mp3');
+audio.style.display = 'block';
+document.getElementById('trackName').textContent = 'Attention — Soundz (Slowed n Reverb)';
+document.getElementById('trackSub').textContent = 'Birthday soundtrack';
 function tone(freq,when,len,vol){const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(0,when);g.gain.linearRampToValueAtTime(vol,when+.03);g.gain.exponentialRampToValueAtTime(.001,when+len);o.connect(g);g.connect(master);o.start(when);o.stop(when+len+.05)}
-function toggleMusic(){if(playing)stopMusic();else startMusic()}
-function startMusic(){if(!ctx){ctx=new(window.AudioContext||window.webkitAudioContext)();master=ctx.createGain();master.gain.value=.18;master.connect(ctx.destination)}if(ctx.state==='suspended')ctx.resume();playing=true;document.getElementById('playBtn').textContent='Pause ♫';document.getElementById('disk').classList.add('playing');startTime=ctx.currentTime;let t=startTime;notes.forEach((n,i)=>{tone(n,t,.65,.09);if(i%3===0)tone(n/2,t,.8,.035);t+=.72});timer=setInterval(()=>{const p=Math.min(1,(ctx.currentTime-startTime)/duration);document.getElementById('bar').style.width=(p*100)+'%';if(p>=1){clearInterval(timer);playing=false;document.getElementById('playBtn').textContent='Play ♫';document.getElementById('disk').classList.remove('playing')}},100)}
-function stopMusic(){playing=false;if(timer)clearInterval(timer);if(ctx)ctx.suspend();document.getElementById('playBtn').textContent='Play ♫';document.getElementById('disk').classList.remove('playing')}
-function personalize(){const name=document.getElementById('nameInput').value.trim()||'Birthday Queen';const sender=document.getElementById('senderInput').value.trim()||'With love, always.';const msg=document.getElementById('messageInput').value.trim();document.querySelector('.hero h1').innerHTML=name+'<br/>Her Story.';document.getElementById('letterText').textContent=msg||'May this new chapter be gentle with you. May God surprise you with the kind of blessings you never knew how to ask for. May you never forget how deeply loved, wonderfully made and incredibly capable you are.';document.getElementById('fromText').textContent=sender;toast('The birthday edition has been updated ✦')}
+function toggleMusic(){if(audio.paused)startMusic();else stopMusic()}
+function startMusic(){audio.play().catch(()=>toast('The song could not be played in this browser.'));}
+function stopMusic(){audio.pause();}
+audio.addEventListener('play',()=>{playing=true;document.getElementById('playBtn').textContent='Pause ♫';document.getElementById('disk').classList.add('playing')});
+audio.addEventListener('pause',()=>{playing=false;document.getElementById('playBtn').textContent='Play ♫';document.getElementById('disk').classList.remove('playing')});
+audio.addEventListener('ended',()=>{document.getElementById('bar').style.width='0%'});
+audio.addEventListener('timeupdate',()=>{if(Number.isFinite(audio.duration)&&audio.duration>0)document.getElementById('bar').style.width=`${(audio.currentTime/audio.duration)*100}%`});
+function personalize(){const name=document.getElementById('nameInput').value.trim()||'Birthday Queen';const sender=document.getElementById('senderInput').value.trim()||'With love, always.';const msg=document.getElementById('messageInput').value.trim();document.querySelector('.hero h1').innerHTML=name+'<br/>Her Story.';document.getElementById('letterText').textContent=msg||birthdayMessage;document.getElementById('letterText').style.whiteSpace='pre-line';document.getElementById('fromText').textContent=sender;toast('The birthday edition has been updated ✦')}
 function toast(t){const x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2200)}
 function celebrate(){for(let i=0;i<85;i++){const c=document.createElement('i');c.className='confetti';c.style.left=(Math.random()*100)+'vw';c.style.setProperty('--x',((Math.random()-.5)*260)+'px');c.style.background=['#d7b27c','#f1e5d5','#9d6b4a','#ffffff'][i%4];c.style.animationDelay=(Math.random()*.7)+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),3200)}toast('Birthday magic activated ✦');startMusic()}
 document.getElementById('audioFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const audio=document.getElementById('audio');audio.src=URL.createObjectURL(f);audio.style.display='block';document.getElementById('trackName').textContent=f.name;document.getElementById('trackSub').textContent='Your chosen birthday song';stopMusic()});
