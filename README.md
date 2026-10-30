@@ -14,3 +14,7 @@ Open `index.html` in a browser. This is a static site; there is no build step or
 - The supplied portrait, original poster reference, PDF design brief, and music file are included in this repository. The poster and PDF are references; they are not shown in the birthday page.
 
 Photo and song uploads are browser previews and are not uploaded or stored by the site.
+
+## Publish with GitHub Pages
+
+In the repository's **Settings → Pages**, choose **GitHub Actions** as the build and deployment source once. After that, the workflow in `.github/workflows/pages.yml` publishes each push to `main`. The expected site address is `https://deborahgeoffreymkamilo-hue.github.io/QM/`.
