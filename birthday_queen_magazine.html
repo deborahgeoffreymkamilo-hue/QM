@@ -32,6 +32,61 @@ I love you, and I hope life gives you a thousand beautiful reasons to remember t
 document.querySelector('.photo').src = encodeURI('WhatsApp Image 2026-10-30 at 08.44.41.jpeg');
 document.getElementById('letterText').textContent = birthdayMessage;
 document.getElementById('letterText').style.whiteSpace = 'pre-line';
+document.querySelector('.hero h1').innerHTML = 'Quincy Moyo<br>Her Day.<br>Her Story.';
+document.querySelector('.side p').textContent = 'This is designed to feel like opening a secret magazine made only for you. The first page announces you. The next pages remember you. The final page leaves you with a message you can keep.';
+const letterEffectsStyle = document.createElement('style');
+letterEffectsStyle.textContent = `
+.letter-heart-fall,.letter-spark{position:fixed;z-index:40;pointer-events:none;user-select:none}
+.letter-heart-fall{top:-3rem;color:#f28ea0;font-size:clamp(1.2rem,3vw,2rem);text-shadow:0 0 12px #f28ea066;animation:letterHeartFall 4.2s ease-in forwards}
+@keyframes letterHeartFall{0%{opacity:0;transform:translate3d(0,-5vh,0) rotate(0) scale(.7)}12%{opacity:1}100%{opacity:0;transform:translate3d(var(--heart-drift),110vh,0) rotate(360deg) scale(1.15)}}
+.letter-spark{color:#e8c67f;font-size:clamp(1rem,2.4vw,1.8rem);text-shadow:0 0 14px #f4d894;animation:letterSpark 1.5s ease-out forwards}
+@keyframes letterSpark{0%{opacity:0;transform:translate(0,0) scale(.2) rotate(0)}25%{opacity:1}100%{opacity:0;transform:translate(var(--spark-x),var(--spark-y)) scale(1.5) rotate(100deg)}}
+@media(prefers-reduced-motion:reduce){.letter-heart-fall,.letter-spark{display:none!important}}
+`;
+document.head.append(letterEffectsStyle);
+let letterEffectsPlayed = false;
+function playLetterEffects() {
+	if (letterEffectsPlayed) return;
+	letterEffectsPlayed = true;
+	const hearts = ['♡', '♥', '❤️'];
+	for (let index = 0; index < 30; index += 1) {
+		const heart = document.createElement('span');
+		heart.className = 'letter-heart-fall';
+		heart.textContent = hearts[index % hearts.length];
+		heart.style.left = `${Math.random() * 100}vw`;
+		heart.style.setProperty('--heart-drift', `${(Math.random() - 0.5) * 180}px`);
+		heart.style.animationDelay = `${Math.random() * 0.8}s`;
+		document.body.append(heart);
+		window.setTimeout(() => heart.remove(), 5200);
+	}
+	window.setTimeout(() => {
+		for (let index = 0; index < 36; index += 1) {
+			const spark = document.createElement('span');
+			spark.className = 'letter-spark';
+			spark.textContent = index % 2 ? '✦' : '✧';
+			spark.style.left = `${Math.random() * 100}vw`;
+			spark.style.top = `${Math.random() * 78}vh`;
+			spark.style.setProperty('--spark-x', `${(Math.random() - 0.5) * 150}px`);
+			spark.style.setProperty('--spark-y', `${(Math.random() - 0.5) * 150}px`);
+			document.body.append(spark);
+			window.setTimeout(() => spark.remove(), 1600);
+		}
+	}, 4000);
+}
+const letterSection = document.querySelector('.letter');
+function checkLetterEntrance() {
+	const bounds = letterSection.getBoundingClientRect();
+	if (bounds.top < window.innerHeight * 0.8 && bounds.bottom > 0) {
+		playLetterEffects();
+		window.clearInterval(letterEntranceTimer);
+		window.removeEventListener('scroll', checkLetterEntrance);
+		window.removeEventListener('resize', checkLetterEntrance);
+	}
+}
+const letterEntranceTimer = window.setInterval(checkLetterEntrance, 300);
+window.addEventListener('scroll', checkLetterEntrance, { passive: true });
+window.addEventListener('resize', checkLetterEntrance);
+window.requestAnimationFrame(checkLetterEntrance);
 const audio = document.getElementById('audio');
 audio.src = encodeURI('Attention - Soundz (Slowed n Reverb) (1).mp3');
 audio.style.display = 'block';
