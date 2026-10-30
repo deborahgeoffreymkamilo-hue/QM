@@ -1,19 +1,18 @@
-# The Birthday Edition
+# The Birthday Magazine
 
-A small, cinematic birthday magazine and digital letter made from the supplied photo, music, and the design brief.
+The supplied birthday magazine is the main page. The landing page opens `birthday_queen_magazine.html`, which includes the magazine, personalization form, confetti, and a built-in instrumental.
 
 ## Open it
 
-Open `index.html` in a browser. This is a static site; there is no build step or dependency installation.
+Open `index.html` in a browser, or open `birthday_queen_magazine.html` directly. This is a static site; there is no build step or dependency installation.
 
 ## Personalize it
 
-- Edit her name, your name, and the birthday letter in the letter section. The letter fields save locally in that browser.
-- Use **Change photo** or **Add your photos** to preview images from your device.
-- Use **Choose a song** to preview another local audio file. The supplied track is the default soundtrack.
-- The supplied portrait, original poster reference, PDF design brief, and music file are included in this repository. The poster and PDF are references; they are not shown in the birthday page.
+- Enter her name, your name, and a personal message in the customization section, then select **Update Her Edition**.
+- Play the built-in instrumental or choose an audio file from your device.
+- The supplied birthday magazine and its embedded portrait are included in this repository.
 
-Photo and song uploads are browser previews and are not uploaded or stored by the site.
+Personalized text and selected audio are handled in your browser; no server or upload service is required.
 
 ## Publish with GitHub Pages
 

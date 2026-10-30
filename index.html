@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#171514" />
-  <meta name="description" content="A little birthday world made just for December." />
-  <title>The Birthday Edition — December</title>
+  <meta name="description" content="A birthday magazine made just for the queen." />
+  <meta http-equiv="refresh" content="0; url=birthday_queen_magazine.html" />
+  <title>Opening the Birthday Magazine</title>
+  <script>window.location.replace("birthday_queen_magazine.html");</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
@@ -14,6 +16,7 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+  <p>If the magazine does not open automatically, <a href="birthday_queen_magazine.html">open the birthday magazine</a>.</p>
   <div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-title">
     <div class="intro-grain" aria-hidden="true"></div>
     <p class="eyebrow intro-edition">SPECIAL EDITION <span>✦</span> JUST FOR YOU</p>
@@ -44,20 +47,20 @@
           <div class="cover-title-block"><p class="script-title">It's the queen's</p><h1 id="cover-title">BIRTHDAY<span>!</span></h1><p class="cover-edition">A VERY SPECIAL BIRTHDAY EDITION</p></div>
           <div class="cover-feature">
             <div class="cover-photo-wrap">
-              <img id="cover-photo" class="cover-photo" src="WhatsApp Image 2026-10-30 at 08.44.41.jpeg" alt="December at sunset, looking back with a flower in her hair" />
+              <img id="cover-photo" class="cover-photo" src="WhatsApp Image 2026-10-30 at 08.44.41.jpeg" alt="October at sunset, looking back with a flower in her hair" />
               <span class="photo-caption">THE QUEEN, IN HER ELEMENT</span>
               <label class="photo-edit" for="cover-photo-input">＋ <span>Change photo</span></label>
               <input class="visually-hidden" id="cover-photo-input" type="file" accept="image/*" />
             </div>
             <div class="cover-copy">
-              <p class="eyebrow">A CELEBRATION OF <span class="person-name">DECEMBER</span></p>
+              <p class="eyebrow">A CELEBRATION OF <span class="person-name">OCTOBER</span></p>
               <h2>Today, the<br /><em>whole world</em><br />gets brighter.</h2>
               <p class="story-copy">In today's special edition, we celebrate a one-of-a-kind soul: her warmth, her beautiful energy, and all the little things that make being around her feel like a gift.</p>
               <div class="forecast"><p class="forecast-title">✳ TODAY'S FORECAST</p><p>100% chance of cake, laughter, <br />sweet memories &amp; being spoiled.</p></div>
               <p class="cover-signoff">With love, always <span>♡</span></p>
             </div>
           </div>
-          <div class="cover-footer"><span>HAPPINESS LOOKS GOOD ON YOU</span><span class="cover-name">DECEMBER</span><span>THE BIRTHDAY QUEEN ♛</span></div>
+          <div class="cover-footer"><span>HAPPINESS LOOKS GOOD ON YOU</span><span class="cover-name">OCTOBER</span><span>THE BIRTHDAY QUEEN ♛</span></div>
         </article>
         <p class="cover-instruction">A little keepsake for your very favorite person. <span>Scroll to explore ↓</span></p>
       </section>
@@ -65,7 +68,7 @@
       <section class="photo-strip section-wrap" aria-label="Birthday memories">
         <div class="section-heading"><p class="eyebrow">THE PHOTO DESK</p><h2>Little moments.<br /><em>Big main-character energy.</em></h2><label class="outline-button upload-label" for="gallery-upload">＋ Add your photos</label><input class="visually-hidden" id="gallery-upload" type="file" accept="image/*" multiple /></div>
         <div class="gallery" id="gallery">
-          <button class="gallery-card" type="button" aria-label="View birthday memory"><img src="WhatsApp Image 2026-10-30 at 08.44.41.jpeg" alt="December at sunset, with a flower in her hair" loading="lazy" /><span>01 — HER KIND OF MAGIC</span></button>
+          <button class="gallery-card" type="button" aria-label="View birthday memory"><img src="WhatsApp Image 2026-10-30 at 08.44.41.jpeg" alt="October at sunset, with a flower in her hair" loading="lazy" /><span>01 — HER KIND OF MAGIC</span></button>
         </div>
       </section>
 
@@ -87,12 +90,12 @@
           <div class="letter-intro"><p class="eyebrow">SEALED WITH LOVE <span>✦</span></p><h2 id="letter-heading">A letter<br /><em>from me.</em></h2><p>Some things deserve more than a quick text. Write your own words here and they'll become part of her keepsake.</p><div class="letter-stamp" aria-hidden="true">A<br /><span>♡</span><br />NOTE</div></div>
           <div class="letter-workspace">
             <form class="letter-form" id="letter-form">
-              <label for="her-name">Her name</label><input id="her-name" name="herName" type="text" value="December" maxlength="40" />
+              <label for="her-name">Her name</label><input id="her-name" name="herName" type="text" value="October" maxlength="40" />
               <label for="your-name">Your name</label><input id="your-name" name="yourName" type="text" placeholder="How should I sign it?" maxlength="40" />
               <label for="birthday-message">Your birthday message</label><textarea id="birthday-message" name="message" rows="6" placeholder="Write what you really want her to know…"></textarea>
               <p class="form-hint">Your words stay in this browser. Nothing is sent anywhere.</p>
             </form>
-            <article class="letter-card" aria-live="polite"><p class="letter-date">A NOTE FOR <span class="person-name">DECEMBER</span></p><p class="letter-dear">My dearest <span id="letter-recipient">December</span>,</p><p class="letter-message" id="letter-preview">Your birthday message will appear here as you write it.</p><p class="letter-closing">With all my love,</p><p class="letter-signature" id="letter-signature">Your person</p><span class="letter-heart" aria-hidden="true">♡</span></article>
+            <article class="letter-card" aria-live="polite"><p class="letter-date">A NOTE FOR <span class="person-name">OCTOBER</span></p><p class="letter-dear">My dearest <span id="letter-recipient">October</span>,</p><p class="letter-message" id="letter-preview">Your birthday message will appear here as you write it.</p><p class="letter-closing">With all my love,</p><p class="letter-signature" id="letter-signature">Your person</p><span class="letter-heart" aria-hidden="true">♡</span></article>
           </div>
         </div>
       </section>
